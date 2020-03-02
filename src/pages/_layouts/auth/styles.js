@@ -30,6 +30,10 @@ export const Content = styled.div`
       color: #fff;
       margin: 0 0 10px;
 
+      &.has-error {
+        border: 1px solid #ad1d1d;
+      }
+
       &:focus {
         background: rgba(0, 0, 0, 0.2);
       }
@@ -37,6 +41,13 @@ export const Content = styled.div`
       &::placeholder {
         color: rgba(255, 255, 255, 0.3);
       }
+    }
+
+    > .error {
+      align-self: flex-start;
+      font-weight: bold;
+      color: #ad1d1d;
+      margin: 0 0 10px;
     }
 
     > button {
