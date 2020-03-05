@@ -1,4 +1,5 @@
 import React, { useRef } from 'react';
+import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { Form } from '@unform/web';
 import * as Yup from 'yup';
@@ -6,7 +7,10 @@ import * as Yup from 'yup';
 import Input from '~/components/Input';
 import logo from '~/assets/logo.svg';
 
+import { signUpRequest } from '~/store/modules/auth/actions';
+
 export default function SignIn() {
+  const dispatch = useDispatch();
   const formRef = useRef(null);
 
   async function handleSubmit(data) {
@@ -29,7 +33,7 @@ export default function SignIn() {
       });
 
       // Validation passed
-      console.tron.log(data);
+      dispatch(signUpRequest(data.name, data.email, data.password));
     } catch (err) {
       const validationErrors = {};
 
