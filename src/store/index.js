@@ -1,8 +1,12 @@
 import createSagaMiddleare from 'redux-saga';
+import { persistStore } from 'redux-persist';
+
 import createStore from './createStore';
 
 import rootReducer from './modules/rootReducer';
 import rootSaga from './modules/rootSaga';
+
+import persistReducers from './persistReducers';
 
 const sagaMonitor =
   process.env.NODE_ENV === 'development'
@@ -13,8 +17,9 @@ const sagaMiddleare = createSagaMiddleare({ sagaMonitor });
 
 const middleares = [sagaMiddleare];
 
-const store = createStore(rootReducer, middleares);
+const store = createStore(persistReducers(rootReducer), middleares);
+const persistor = persistStore(store);
 
 sagaMiddleare.run(rootSaga);
 
-export default store;
+export { store, persistor };
