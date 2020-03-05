@@ -1,12 +1,16 @@
 import React, { useRef } from 'react';
+import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { Form } from '@unform/web';
 import * as Yup from 'yup';
+
+import { signInRequest } from '~/store/modules/auth/actions';
 
 import Input from '~/components/Input';
 import logo from '~/assets/logo.svg';
 
 export default function SignIn() {
+  const dispatch = useDispatch();
   const formRef = useRef(null);
 
   async function handleSubmit(data) {
@@ -28,7 +32,7 @@ export default function SignIn() {
       });
 
       // Validation passed
-      console.tron.log(data);
+      dispatch(signInRequest(data.email, data.password));
     } catch (err) {
       const validationErrors = {};
 
