@@ -61,6 +61,6 @@ export const Profile = styled.div`
 
   img {
     border-radius: 50%;
-    width: 32px;
+    height: 32px;
   }
 `;
