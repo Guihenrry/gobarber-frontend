@@ -2,6 +2,8 @@ import React, { useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import { useField } from '@unform/core';
 
+import { InputFiled } from './styles';
+
 export default function Input({ name, ...rest }) {
   const inputRef = useRef(null);
   const { fieldName, defaultValue = '', registerField, error } = useField(name);
@@ -16,7 +18,7 @@ export default function Input({ name, ...rest }) {
 
   return (
     <>
-      <input
+      <InputFiled
         ref={inputRef}
         defaultValue={defaultValue}
         className={error ? 'has-error' : ''}
